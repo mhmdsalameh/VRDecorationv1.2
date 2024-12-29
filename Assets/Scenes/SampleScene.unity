@@ -1503,6 +1503,72 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373067002}
   m_CullTransparentMesh: 1
+--- !u!1 &1377165500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1377165502}
+  - component: {fileID: 1377165501}
+  m_Layer: 0
+  m_Name: FurnitureRotatorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1377165501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377165500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9bfccd7a471ae4eb22908ffe633e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackpadInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Trackpad Input
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: 462fa252-bdc7-4563-96ee-d2533397b121
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 04e76836-b339-47cf-b4bb-de946301dd31
+        m_Path: <XRController>{RightHand}/{Primary2DAxis}
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Trackpad Input
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  selectedFurniture: {fileID: 0}
+  rotationAngle: 45
+--- !u!4 &1377165502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377165500}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.2536645, y: -8.963661, z: 16.006285}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1411534656
 GameObject:
   m_ObjectHideFlags: 0
@@ -2608,3 +2674,4 @@ SceneRoots:
   - {fileID: 729014786}
   - {fileID: 1144934940}
   - {fileID: 124504435}
+  - {fileID: 1377165502}

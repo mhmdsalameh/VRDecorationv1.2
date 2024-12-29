@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class FurnitureSpawner : MonoBehaviour
 {
-    public GameObject[] furniturePrefabs; // Array of prefabs
-    public Transform playerCamera;        // Player's head position
-    public float maxRayDistance = 50f;    // Max distance for raycasting
-    public float gridSize = 1f;           // Size of the grid squares
+    public GameObject[] furniturePrefabs;  // Array of furniture prefabs
+    public Transform playerCamera;         // Reference to the player's camera
+    public float spawnDistance = 2f;       // Distance from the player to spawn the furniture
+    public Vector3 spawnOffset = new Vector3(0, 1, 0); // Height offset for spawning furniture
 
-    // Function to spawn a prefab based on index
     public void SpawnFurniture(int prefabIndex)
     {
         if (prefabIndex < 0 || prefabIndex >= furniturePrefabs.Length)
@@ -16,28 +15,10 @@ public class FurnitureSpawner : MonoBehaviour
             return;
         }
 
-        // Raycast to detect the ground
-        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, maxRayDistance, LayerMask.GetMask("Ground")))
-        {
-            // Snap position to grid
-            Vector3 spawnPosition = SnapToGrid(hit.point);
-            Quaternion spawnRotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+        // Calculate spawn position in front of the player
+        Vector3 spawnPosition = playerCamera.position + playerCamera.forward * spawnDistance + spawnOffset;
 
-            // Spawn the furniture
-            Instantiate(furniturePrefabs[prefabIndex], spawnPosition, spawnRotation);
-        }
-        else
-        {
-            Debug.LogWarning("No valid ground detected for spawning!");
-        }
-    }
-
-    // Snap a position to the nearest grid point
-    private Vector3 SnapToGrid(Vector3 position)
-    {
-        position.x = Mathf.Round(position.x / gridSize) * gridSize;
-        position.z = Mathf.Round(position.z / gridSize) * gridSize;
-        return position;
+        // Spawn the furniture prefab
+        Instantiate(furniturePrefabs[prefabIndex], spawnPosition, Quaternion.identity);
     }
 }
